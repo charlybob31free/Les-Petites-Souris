@@ -667,49 +667,6 @@
     .heart { color: var(--heart); }
     audio { display: none; }
 
-    /* Message d'accueil */
-    .welcome {
-      display: none;
-      text-align: center;
-      margin-bottom: 28px;
-      padding: 16px 14px;
-      transform: rotate(-0.5deg);
-      position: relative;
-    }
-
-    .welcome.visible { display: block; }
-
-    .welcome p {
-      font-family: 'Caveat', cursive;
-      font-size: 1.4rem;
-      color: var(--ink);
-      margin-bottom: 10px;
-      line-height: 1.35;
-    }
-
-    .welcome button {
-      font-family: 'Caveat', cursive;
-      font-size: 1.15rem;
-      font-weight: 600;
-      padding: 6px 18px;
-      border: none;
-      background: transparent;
-      color: var(--accent);
-      cursor: pointer;
-      position: relative;
-    }
-
-    .welcome button::after {
-      content: '';
-      position: absolute;
-      left: 6px;
-      right: 6px;
-      bottom: 2px;
-      height: 2px;
-      background: var(--accent-soft);
-      border-radius: 2px 4px 1px 3px;
-      opacity: 0.7;
-    }
 
     /* Temps restant */
     .now-time {
@@ -853,10 +810,6 @@
       </div>
     </header>
 
-    <div class="welcome" id="welcomeMsg">
-      <p>Bienvenue dans le nid de Plume & Brindille…</p>
-      <button id="welcomeOk">Entrer</button>
-    </div>
 
     <div class="resume-banner" id="resumeBanner">
       <p>Tu avais commencé une histoire… Veux-tu reprendre ?</p>
@@ -1569,18 +1522,6 @@
         } catch(e) {}
       });
 
-      // Message d'accueil (première visite uniquement)
-      try {
-        if (!localStorage.getItem('lps-v5-welcome')) {
-          const w = document.getElementById('welcomeMsg');
-          w.classList.add('visible');
-          document.getElementById('welcomeOk').onclick = () => {
-            playDrop();
-            w.classList.remove('visible');
-            try { localStorage.setItem('lps-v5-welcome', '1'); } catch(e) {}
-          };
-        }
-      } catch(e) {}
 
       loadFavs();
 
