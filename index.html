@@ -83,7 +83,7 @@
     .page {
       max-width: 620px;
       margin: 0 auto;
-      padding: 28px 22px 220px;
+      padding: 28px 22px 280px;
       position: relative;
       z-index: 1;
     }
@@ -153,15 +153,37 @@
 
     .doodle {
       position: absolute;
-      opacity: 0.22;
+      opacity: 0.28;
       pointer-events: none;
       color: var(--accent);
+      z-index: 0;
     }
 
-    .doodle svg { width: 100%; height: 100%; }
-    .doodle-1 { top: 8px; left: 12px; width: 28px; height: 28px; transform: rotate(-15deg); }
-    .doodle-2 { top: 20px; right: 30px; width: 22px; height: 22px; transform: rotate(20deg); }
-    .doodle-3 { bottom: -10px; left: 40px; width: 20px; height: 20px; transform: rotate(8deg); }
+    .doodle svg { width: 100%; height: 100%; overflow: visible; }
+
+    /* Posés un peu partout, comme par le vent */
+    .doodle-1  { top: 22px;   left: 12%;  width: 28px; height: 28px; transform: rotate(-22deg); }
+    .doodle-2  { top: 55px;   left: 68%;  width: 22px; height: 22px; transform: rotate(18deg); }
+    .doodle-3  { top: 95px;   left: 6%;   width: 20px; height: 20px; transform: rotate(-9deg); }
+    .doodle-4  { top: 175px;  left: 78%;  width: 26px; height: 26px; transform: rotate(14deg); }
+    .doodle-5  { top: 240px;  left: 22%;  width: 18px; height: 18px; transform: rotate(-27deg); }
+    .doodle-6  { top: 360px;  left: 55%;  width: 30px; height: 30px; transform: rotate(7deg); }
+    .doodle-7  { top: 390px;  left: 8%;   width: 24px; height: 24px; transform: rotate(21deg); }
+    .doodle-8  { top: 450px;  left: 72%;  width: 20px; height: 20px; transform: rotate(-15deg); }
+    .doodle-9  { top: 530px;  left: 42%;  width: 26px; height: 26px; transform: rotate(11deg); }
+    .doodle-10 { top: 610px;  left: 18%;  width: 19px; height: 19px; transform: rotate(-19deg); }
+    .doodle-11 { top: 690px;  left: 85%;  width: 27px; height: 27px; transform: rotate(25deg); }
+    .doodle-12 { top: 780px;  left: 48%;  width: 23px; height: 23px; transform: rotate(-6deg); }
+    .doodle-13 { top: 860px;  left: 28%;  width: 21px; height: 21px; transform: rotate(16deg); }
+    .doodle-14 { top: 950px;  left: 63%;  width: 29px; height: 29px; transform: rotate(-13deg); }
+    .doodle-15 { top: 1040px; left: 15%;  width: 18px; height: 18px; transform: rotate(29deg); }
+    .doodle-16 { top: 1130px; left: 80%;  width: 25px; height: 25px; transform: rotate(-21deg); }
+    .doodle-17 { top: 1220px; left: 35%;  width: 24px; height: 24px; transform: rotate(8deg); }
+    .doodle-18 { top: 1310px; left: 58%;  width: 22px; height: 22px; transform: rotate(-17deg); }
+    .doodle-19 { top: 1400px; left: 10%;  width: 20px; height: 20px; transform: rotate(23deg); }
+    .doodle-20 { top: 1490px; left: 70%;  width: 26px; height: 26px; transform: rotate(-11deg); }
+    .doodle-21 { top: 1580px; left: 45%;  width: 19px; height: 19px; transform: rotate(14deg); }
+    .doodle-22 { top: 1670px; left: 25%;  width: 28px; height: 28px; transform: rotate(-24deg); }
 
     .stories {
       display: flex;
@@ -742,14 +764,13 @@
       .night-panel { padding: 6px 8px 8px; }
       .night-title { font-size: 0.72rem; }
       .night-btn { width: 32px; height: 32px; }
-    }
-
-    @media (max-width: 480px) {
+      .page { padding-bottom: 320px; }
       .controls { gap: 8px; }
       .vol-slider { width: 48px; }
       .story-desc { padding-left: 0; }
       .autoplay-label { font-size: 0.85rem; }
       .page-corner { width: 50px; height: 50px; }
+      .footer { margin-top: 56px; padding-bottom: 28px; }
     }
   </style>
 </head>
@@ -766,22 +787,30 @@
 
   <div class="page">
     <header>
-      <div class="doodle doodle-1">
-        <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4">
-          <path d="M14 4 C10 10, 6 14, 14 24 C22 14, 18 10, 14 4 Z"/>
-        </svg>
-      </div>
-      <div class="doodle doodle-2">
-        <svg viewBox="0 0 22 22" fill="currentColor">
-          <path d="M11 3 L12.5 8.5 L18 9 L14 13 L15.5 18.5 L11 15.5 L6.5 18.5 L8 13 L4 9 L9.5 8.5 Z" opacity="0.8"/>
-        </svg>
-      </div>
-      <div class="doodle doodle-3">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3">
-          <circle cx="10" cy="10" r="3"/>
-          <path d="M10 2 L10 5 M10 15 L10 18 M2 10 L5 10 M15 10 L18 10"/>
-        </svg>
-      </div>
+      <!-- Dessins dispersés sur la page -->
+      <div class="doodle doodle-1"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 4 C10 10, 6 14, 14 24 C22 14, 18 10, 14 4 Z"/></svg></div>
+      <div class="doodle doodle-2"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 3 L12.5 8.5 L18 9 L14 13 L15.5 18.5 L11 15.5 L6.5 18.5 L8 13 L4 9 L9.5 8.5 Z" opacity="0.85"/></svg></div>
+      <div class="doodle doodle-3"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="10" cy="10" r="3"/><path d="M10 2 L10 5 M10 15 L10 18 M2 10 L5 10 M15 10 L18 10"/></svg></div>
+      <div class="doodle doodle-4"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 18 Q4 12 10 8 Q14 4 18 8 Q24 12 20 18 Q16 24 12 20 Q10 22 8 18 Z"/><path d="M13 18 L13 24"/></svg></div>
+      <div class="doodle doodle-5"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 17 L8.8 15.8 C5 12.2 2.5 10 2.5 7.5 2.5 5.3 4.3 3.5 6.5 3.5c1.2 0 2.4.6 3.2 1.5C10.5 4.1 11.7 3.5 12.9 3.5c2.2 0 4 1.8 4 4 0 2.5-2.5 4.7-6.3 8.3L10 17z" opacity="0.75"/></svg></div>
+      <div class="doodle doodle-6"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="14" cy="16" rx="7" ry="6"/><circle cx="9" cy="10" r="3.2"/><circle cx="19" cy="10" r="3.2"/><circle cx="12" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/></svg></div>
+      <div class="doodle doodle-7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 5 C9 9, 6 12, 12 20 C18 12, 15 9, 12 5 Z"/></svg></div>
+      <div class="doodle doodle-8"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 3 L12.2 8 L17.5 8.3 L13.4 11.6 L14.6 16.8 L11 13.9 L7.4 16.8 L8.6 11.6 L4.5 8.3 L9.8 8 Z" opacity="0.8"/></svg></div>
+      <div class="doodle doodle-9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 16 Q3 11 8 7 Q12 3 16 7 Q21 11 18 16 Q14 21 12 17 Q10 20 6 16 Z"/><path d="M12 16 L12 22"/></svg></div>
+      <div class="doodle doodle-10"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="10" cy="10" r="2.5"/><path d="M10 3 L10 5.5 M10 14.5 L10 17 M3 10 L5.5 10 M14.5 10 L17 10 M5 5 L6.5 6.5 M13.5 13.5 L15 15 M5 15 L6.5 13.5 M13.5 6.5 L15 5"/></svg></div>
+      <div class="doodle doodle-11"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 17 Q4 12 10 8 Q14 4 18 8 Q24 12 20 17 Q16 22 13 18 Q11 21 8 17 Z"/><path d="M13 17 L13 23"/></svg></div>
+      <div class="doodle doodle-12"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 18 L9.9 16.9 C6.5 13.6 4.2 11.6 4.2 9.2 4.2 7.2 5.8 5.6 7.8 5.6c1.1 0 2.2.5 2.9 1.4C11.4 6.1 12.5 5.6 13.6 5.6c2 0 3.6 1.6 3.6 3.6 0 2.4-2.3 4.4-5.7 7.7L11 18z" opacity="0.75"/></svg></div>
+      <div class="doodle doodle-13"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 4 C9 8, 6 11, 12 19 C18 11, 15 8, 12 4 Z"/></svg></div>
+      <div class="doodle doodle-14"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="14" cy="16" rx="6.5" ry="5.5"/><circle cx="9.5" cy="10.5" r="3"/><circle cx="18.5" cy="10.5" r="3"/><circle cx="12" cy="15" r="0.9" fill="currentColor"/><circle cx="16" cy="15" r="0.9" fill="currentColor"/><path d="M14 18 Q12 20 11 19" stroke-width="1.1"/></svg></div>
+      <div class="doodle doodle-15"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="10" cy="10" r="2.8"/><path d="M10 2.5 L10 5 M10 15 L10 17.5 M2.5 10 L5 10 M15 10 L17.5 10"/></svg></div>
+      <div class="doodle doodle-16"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 5 C10 10, 7 13, 13 22 C19 13, 16 10, 13 5 Z"/></svg></div>
+      <div class="doodle doodle-17"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 3 L12.3 8.2 L17.8 8.5 L13.5 11.9 L14.8 17.2 L11 14.2 L7.2 17.2 L8.5 11.9 L4.2 8.5 L9.7 8.2 Z" opacity="0.8"/></svg></div>
+      <div class="doodle doodle-18"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 16 Q4 11 9 7 Q13 3 17 7 Q22 11 19 16 Q15 21 12 17 Q10 20 7 16 Z"/><path d="M12 16 L12 22"/></svg></div>
+
+      <div class="doodle doodle-19"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 3 L12.2 8 L17.5 8.3 L13.4 11.6 L14.6 16.8 L11 13.9 L7.4 16.8 L8.6 11.6 L4.5 8.3 L9.8 8 Z" opacity="0.8"/></svg></div>
+      <div class="doodle doodle-20"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 16 Q4 11 9 7 Q13 3 17 7 Q22 11 19 16 Q15 21 12 17 Q10 20 7 16 Z"/><path d="M12 16 L12 22"/></svg></div>
+      <div class="doodle doodle-21"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="10" cy="10" r="2.5"/><path d="M10 3 L10 5.5 M10 14.5 L10 17 M3 10 L5.5 10 M14.5 10 L17 10"/></svg></div>
+      <div class="doodle doodle-22"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="14" cy="16" rx="6.5" ry="5.5"/><circle cx="9.5" cy="10.5" r="3"/><circle cx="18.5" cy="10.5" r="3"/><circle cx="12" cy="15" r="0.9" fill="currentColor"/><circle cx="16" cy="15" r="0.9" fill="currentColor"/></svg></div>
 
       <div class="header-top">
         <div class="header-titles">
@@ -1121,7 +1150,7 @@
       try {
         const c = getCtx();
         const master = c.createGain();
-        master.gain.value = ambVol * 0.07;
+        master.gain.value = ambVol * 0.16;
         master.connect(c.destination);
         const sources = [];
 
@@ -1136,7 +1165,7 @@
           noise.loop = true;
           const filter = c.createBiquadFilter();
           filter.type = 'lowpass';
-          filter.frequency.value = 380;
+          filter.frequency.value = 750;
           noise.connect(filter);
           filter.connect(master);
           noise.start();
@@ -1186,7 +1215,7 @@
     function setAmbVol(v) {
       ambVol = Math.max(0, Math.min(1, v));
       if (ambNodes && ambNodes.master) {
-        ambNodes.master.gain.value = ambVol * 0.07;
+        ambNodes.master.gain.value = ambVol * 0.16;
       }
       try { localStorage.setItem(AMB_VOL_KEY, String(ambVol)); } catch(e) {}
       const slider = document.getElementById('ambVolSlider');
